@@ -1,0 +1,17 @@
+baseURL in http-common.js
+certificate in nginx_config/default.conf
+
+docker build -t jgranq/lta-webapp .
+
+docker save -o ./docker-lta-webapp-211108.tar jgranq/lta-webapp
+
+scp -r docker-lta-webapp-211108.tar jo3302gr@lta-staging.ht.lu.se:/home/jo3302gr
+
+
+# On server
+
+docker load -i docker-lta-webapp-200529.tar
+
+docker-compose down
+docker-compose up
+
