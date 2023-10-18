@@ -19,16 +19,7 @@ Vue.use(require("moment")); // TODO try removing this line (https://stackoverflo
 //   appId: ""
 // };
 
-const firebaseConfig = {
-  apiKey: "AIzaSyClmckl-UpROYVay8OB5vogj_sZ2J4KyGA",
-  authDomain: "lang-track-app.firebaseapp.com",
-  databaseURL: "https://lang-track-app.firebaseio.com",
-  projectId: "lang-track-app",
-  storageBucket: "lang-track-app.appspot.com",
-  messagingSenderId: "921058751230",
-  appId: "1:921058751230:web:d5cb64960944605b6f6baf"
-};
-
+const firebaseConfig = require('./admin.json');
 firebase.initializeApp(firebaseConfig);
 
 firebase.auth().onAuthStateChanged(user => {
