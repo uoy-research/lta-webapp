@@ -44,7 +44,7 @@ export default new Router({
     },
     {
       path: "/surveys",
-      alias: ["/Surveys", "/", "/webadmin/", "/webadmin/surveys"],
+      alias: ["/Surveys", "/webadmin/", "/webadmin/surveys"],
       name: "surveys",
       component: () => import("./components/SurveyList")
     },
@@ -74,7 +74,7 @@ export default new Router({
     },
     {
       path: "/login",
-      alias: "/webadmin/login",
+      alias: ["/webadmin/login", "/"],
       name: "login",
       component: () => import("./components/Login")
     }
