@@ -7,7 +7,7 @@ import router from './router'
 
 const API = axios.create({
   // baseURL: "http://localhost:9001/api",
-  baseURL: "https://lta.ht.lu.se/api",
+  baseURL: "https://langtrackappdev.york.ac.uk/api",
   // baseURL: "https://lta-staging.ht.lu.se/api",
   // baseURL: "http://ht-lang-track.ht.lu.se:443/api",
   headers: {
