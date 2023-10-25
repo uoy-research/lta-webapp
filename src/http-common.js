@@ -1,15 +1,11 @@
 import axios from "axios";
-
+import router from './router'
 // import store from "./store";
 
-
-import router from './router'
+const config = require("./constants/config.json");
 
 const API = axios.create({
-  // baseURL: "http://localhost:9001/api",
-  baseURL: "https://langtrackappdev.york.ac.uk/api",
-  // baseURL: "https://lta-staging.ht.lu.se/api",
-  // baseURL: "http://ht-lang-track.ht.lu.se:443/api",
+  baseURL: config["baseURL"],
   headers: {
     "Content-type": "application/json"
     // "token": store ? (store.state.user ? JSON.stringify(store.state.user.data) : "no user") : "no store"

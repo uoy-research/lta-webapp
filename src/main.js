@@ -9,17 +9,7 @@ Vue.config.productionTip = false
 
 Vue.use(require("moment")); // TODO try removing this line (https://stackoverflow.com/a/53892036/237509)
 
-// const configOptions = {
-//   apiKey: "",
-//   authDomain: "vue-firebase-auth-2802d.firebaseapp.com",
-//   databaseURL: "https://vue-firebase-auth-2802d.firebaseio.com",
-//   projectId: "vue-firebase-auth-2802d",
-//   storageBucket: "",
-//   messagingSenderId: "",
-//   appId: ""
-// };
-
-const firebaseConfig = require('./admin.json');
+const firebaseConfig = require('./constants/admin.json');
 firebase.initializeApp(firebaseConfig);
 
 firebase.auth().onAuthStateChanged(user => {
