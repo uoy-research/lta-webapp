@@ -2,7 +2,7 @@ import axios from "axios";
 import router from './router'
 // import store from "./store";
 
-const config = require("./constants/config.json");
+const config = require("./constants/api.json");
 
 const API = axios.create({
   baseURL: config["baseURL"],
