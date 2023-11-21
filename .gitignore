@@ -13,3 +13,4 @@ cheatsheet
 .DS_Store
 
 src/constants/admin.json
+src/constants/config.json
