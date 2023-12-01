@@ -56,7 +56,7 @@ import tdUserNameLink from "./table/td/tdUserNameLink";
 import hLargeIconHeader from "./h/hLargeIconHeader";
 
 export default {
-  name: "group",
+  name: "group-component",
   components: {
     tdUserNameLink,
     hLargeIconHeader

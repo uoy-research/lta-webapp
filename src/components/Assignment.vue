@@ -60,7 +60,7 @@ import hLargeIconHeader from "./h/hLargeIconHeader";
 import trDetail from "./table/tr/trDetail";
 
 export default {
-  name: "survey",
+  name: "survey-component",
   components: {
     hLargeIconHeader,
     trDetail

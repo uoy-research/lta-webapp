@@ -365,7 +365,7 @@ export default {
     hLargeIconHeader,
     trDetail
   },
-  name: "survey",
+  name: "survey-component",
   data() {
     return {
       currentSurvey: {
