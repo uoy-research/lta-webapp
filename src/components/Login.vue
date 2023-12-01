@@ -53,8 +53,11 @@
 </template>
 
 <script>
-import * as firebase from "firebase/app";
-import "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+const firebaseConfig = require('../constants/admin.json');
+const fb_app = initializeApp(firebaseConfig);
+const fb_auth = getAuth(fb_app);
 
 export default {
   name: "login-component",
@@ -69,9 +72,7 @@ export default {
   },
   methods: {
     submit() {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.form.email, this.form.password)
+      signInWithEmailAndPassword(fb_auth, this.form.email, this.form.password)
         .then(resp => {
           console.log("" + resp.user.getIdToken());
           this.$router.replace({ name: "Users" });
@@ -83,7 +84,7 @@ export default {
     }
   },
   beforeMount() {
-    firebase.auth().signOut()
+    signOut(fb_auth)
   }
 };
 </script>
