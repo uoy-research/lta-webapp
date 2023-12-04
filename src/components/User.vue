@@ -207,7 +207,7 @@ import hLargeIconHeader from "./h/hLargeIconHeader";
 import trDetail from "./table/tr/trDetail";
 
 export default {
-  name: "user",
+  name: "user-component",
   components: {
     tdAssignmentNameLink,
     tdGroupNameLink,
