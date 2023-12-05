@@ -24,6 +24,9 @@
     <div class="container">
       <router-view />
     </div>
+    <footer style="text-align:center; padding-top:24px">
+      <a href="https://www.york.ac.uk/about/legal-statements/">University of York Legal Disclaimer</a>
+    </footer>
   </div>
 </template>
 
