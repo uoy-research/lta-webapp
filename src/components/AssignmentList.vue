@@ -18,9 +18,9 @@
 
     <div class="search-field input-group mb-4 mt-4">
       <label>From:</label>
-      <datetime class="ml-2 mr-2" format="YYYY-MM-DD" width="316px" v-model="filterFrom" @input="retrieveAssignments"></datetime>
+      <input type="date" class="form-control ml-2 mr-2" width="316px" v-model="filterFrom" @input="retrieveAssignments" />
       <label>To:</label>
-      <datetime class="ml-2 mr-2" format="YYYY-MM-DD" width="316px" v-model="filterTo" @input="retrieveAssignments"></datetime>
+      <input type="date" class="form-control ml-2 mr-2" width="316px" v-model="filterTo" @input="retrieveAssignments" />
     </div>
 
     <div class="list row mt-4">
@@ -115,7 +115,6 @@
 import AssignmentDataService from "../services/AssignmentDataService";
 
 import moment from "moment";
-import datetime from "vuejs-datetimepicker";
 import tdAssignmentNameLink from "./table/td/tdAssignmentNameLink";
 import tdGrayIfFuture from "./table/td/tdGrayIfFuture";
 import hLargeIconHeader from "./h/hLargeIconHeader";
@@ -125,7 +124,6 @@ import trDetail from "./table/tr/trDetail";
 export default {
   name: "assignment-list",
   components: {
-    datetime,
     tdAssignmentNameLink,
     tdGrayIfFuture,
     hLargeIconHeader,

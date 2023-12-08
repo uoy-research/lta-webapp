@@ -68,7 +68,7 @@
         </div>
         <div>
           publishAt:
-          <datetime format="YYYY-MM-DD H:i:s" width="300px" v-model="scheduleOnceDatetime"></datetime>
+          <input type="datetime-local" step="2" width="300px" class="form-control" v-model="scheduleOnceDatetime" />
         </div>
         <div class="mt-3">
           <span>
@@ -104,22 +104,23 @@
         </div>
         <div>
           scheduleStartDate:
-          <datetime format="YYYY-MM-DD" width="300px" v-model="scheduleStartDate"></datetime>scheduleEndDate:
-          <datetime format="YYYY-MM-DD" width="300px" v-model="scheduleEndDate"></datetime>
+          <input type="date" width="300px" class="form-control" v-model="scheduleStartDate" />
+          scheduleEndDate:
+          <input type="date" width="300px" class="form-control" v-model="scheduleEndDate" />
         </div>
 
         <div>
           Hours:
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM1"></datetime>
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM2"></datetime>
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM3"></datetime>
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM4"></datetime>
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM5"></datetime>
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM1" />
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM2" />
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM3" />
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM4" />
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM5" />
         </div>
 
         <div>
           randomizeMinutes:
-          <input type="text" class="form-control" v-model="randomizeMinutes" />
+          <input type="number" min="0" class="form-control" v-model="randomizeMinutes" />
         </div>
 
         <div class="mt-4">
@@ -347,7 +348,6 @@
 
 <script>
 import moment from "moment";
-import datetime from "vuejs-datetimepicker";
 
 import SurveyDataService from "../services/SurveyDataService";
 import UserDataService from "../services/UserDataService";
@@ -360,7 +360,6 @@ import trDetail from "./table/tr/trDetail";
 
 export default {
   components: {
-    datetime,
     tdAssignmentNameLink,
     hLargeIconHeader,
     trDetail
@@ -513,6 +512,8 @@ export default {
     },
 
     scheduleSurveyOnce() {
+      this.scheduleOnceDatetime = this.scheduleOnceDatetime.replace("T", " ");
+      
       SurveyDataService.scheduleSurveyOnce(
         this.currentSurvey._id,
         this.selectedScheduleOnceUserId,

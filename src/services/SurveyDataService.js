@@ -50,7 +50,7 @@ class SurveyDataService {
   }
 
   scheduleSurveyOnce(sid, uid, publishAt) {
-    // alert("publishAt: '" + moment(publishAt.format("YYYY-MM-DD HH:mm")) + "'.");
+    //alert("publishAt: '" + moment(publishAt.format("YYYY-MM-DD HH:mm")) + "'.");
     if (!moment(publishAt).isValid()) {
       alert("publishAt not valid: '" + publishAt + "'.");
       return;
@@ -68,11 +68,11 @@ class SurveyDataService {
     }
 
     if (!moment(startYMD).isValid()) {
-      alert("publishAt not valid: '" + startYMD + "'.");
+      alert("startYMD not valid: '" + startYMD + "'.");
       return;
     }
     if (!moment(endYMD).isValid()) {
-      alert("publishAt not valid: '" + endYMD + "'.");
+      alert("endYMD not valid: '" + endYMD + "'.");
       return;
     }
 
