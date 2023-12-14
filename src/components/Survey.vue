@@ -487,10 +487,12 @@ export default {
         .then(response => {
           console.log(response.data);
           this.updateMessage = "The Survey was updated successfully!";
+          alert(this.updateMessage);
         })
         .catch(e => {
           console.log(e);
           this.updateMessage = "Update failed.";
+          alert(this.updateMessage);
         });
     },
 
@@ -502,7 +504,8 @@ export default {
         .then(response => {
           console.log(response.data);
           this.assignMessage = "The user has been assigned the survey.";
-          this.getAssignmentsOfSurvey()
+          alert(this.assignMessage);
+          this.getAssignmentsOfSurvey(this.currentSurvey._id)
         })
         .catch(e => {
           console.log(e);
@@ -525,7 +528,8 @@ export default {
             "The survey series has been scheduled at " +
             this.scheduleOnceDatetime +
             ".";
-          this.getAssignmentsOfSurvey()
+          alert(this.assignMessage);
+          this.getAssignmentsOfSurvey(this.currentSurvey._id)
         })
         .catch(e => {
           console.log(e);
@@ -551,7 +555,8 @@ export default {
         .then(response => {
           console.log(response.data);
           this.assignMessage = "The survey series has been scheduled.";
-          this.getAssignmentsOfSurvey()
+          alert(this.assignMessage);
+          this.getAssignmentsOfSurvey(this.currentSurvey._id)
         })
         .catch(e => {
           console.log(e);
