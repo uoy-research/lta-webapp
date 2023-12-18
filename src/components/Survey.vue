@@ -85,23 +85,18 @@
         userId:
         <div class="input-group">
           <select class="form-control" v-model="selectedScheduleSeriesUserId">
-            <option value=""></option>
-            <option
-              v-for="u in allUsers"
-              v-bind:value="u.userId"
-              v-bind:key="u.userId"
-            >{{ u.userId }}</option>
-          </select>
-        </div>
-        groupId:
-        <div class="input-group">
-          <select class="form-control" v-model="selectedScheduleSeriesGroupId">
-            <option value=""></option>
+            <option disabled>—Groups—</option>
             <option
               v-for="g in allGroups"
-              v-bind:value="g.groupId"
+              v-bind:value="'g:' + g.groupId"
               v-bind:key="g.groupId"
             >{{ g.groupId }}</option>
+            <option disabled>—Users—</option>
+            <option
+              v-for="u in allUsers"
+              v-bind:value="'u:' + u.userId"
+              v-bind:key="u.userId"
+            >{{ u.userId }}</option>
           </select>
         </div>
         <div>
@@ -389,7 +384,6 @@ export default {
       scheduleOnceDatetime: "",
 
       selectedScheduleSeriesUserId: "",
-      selectedScheduleSeriesGroupId: "",
       scheduleStartDate: "",
       scheduleEndDate: "",
       scheduleHM1: "",
@@ -546,7 +540,6 @@ export default {
       SurveyDataService.scheduleSurveySeries(
         this.currentSurvey._id,
         this.selectedScheduleSeriesUserId,
-        this.selectedScheduleSeriesGroupId,
         this.scheduleStartDate,
         this.scheduleEndDate,
         this.scheduleHM1,

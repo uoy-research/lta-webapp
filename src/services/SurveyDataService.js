@@ -68,11 +68,21 @@ class SurveyDataService {
     return http.post(`/users/${uid}/schedule/survey/${sid}/${date}/${date}/${time}++++/0`);
   }
 
-  scheduleSurveySeries(sid, uid, gid, startYMD, endYMD, hm1, hm2, hm3, hm4, hm5, plusMinusRandomMinutes) {
+  scheduleSurveySeries(sid, uid, startYMD, endYMD, hm1, hm2, hm3, hm4, hm5, plusMinusRandomMinutes) {
 
-    if ((uid && gid) || (!uid && !gid)) {
-      alert("please select either user or group");
-      return;
+    let usersOrGroups = null;
+    switch (uid.slice(0, 2)) {
+      case "u:":
+        usersOrGroups = "users";
+        uid = uid.slice(2);
+        break;
+      case "g:":
+        usersOrGroups = "groups";
+        uid = uid.slice(2);
+        break;
+      default:
+        alert("please select either user or group");
+        return;
     }
 
     if (!moment(startYMD).isValid()) {
@@ -84,11 +94,7 @@ class SurveyDataService {
       return;
     }
 
-    if (uid) {
-      return http.post(`/users/${uid}/schedule/survey/${sid}/${startYMD}/${endYMD}/${hm1}+${hm2}+${hm3}+${hm4}+${hm5}/${plusMinusRandomMinutes}`);
-    } else if (gid) {
-      return http.post(`/groups/${gid}/schedule/survey/${sid}/${startYMD}/${endYMD}/${hm1}+${hm2}+${hm3}+${hm4}+${hm5}/${plusMinusRandomMinutes}`);
-    }
+    return http.post(`/${usersOrGroups}/${uid}/schedule/survey/${sid}/${startYMD}/${endYMD}/${hm1}+${hm2}+${hm3}+${hm4}+${hm5}/${plusMinusRandomMinutes}`);
   }
 }
 
