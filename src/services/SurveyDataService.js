@@ -47,14 +47,44 @@ class SurveyDataService {
 
   assignSurvey(sid, uid) {
 
+    let usersOrGroups = null;
+    switch (uid.slice(0, 2)) {
+      case "u:":
+        usersOrGroups = "users";
+        uid = uid.slice(2);
+        break;
+      case "g:":
+        usersOrGroups = "groups";
+        uid = uid.slice(2);
+        break;
+      default:
+        alert("please select either user or group");
+        return;
+    }
+
     var now = new Date().toISOString();
     var date = now.slice(0, 10);
     var time = now.slice(11, 19);
 
-    return http.post(`/users/${uid}/schedule/survey/${sid}/${date}/${date}/${time}++++/0`);
+    return http.post(`/${usersOrGroups}/${uid}/schedule/survey/${sid}/${date}/${date}/${time}++++/0`);
   }
 
   scheduleSurveyOnce(sid, uid, publishAt) {
+
+    let usersOrGroups = null;
+    switch (uid.slice(0, 2)) {
+      case "u:":
+        usersOrGroups = "users";
+        uid = uid.slice(2);
+        break;
+      case "g:":
+        usersOrGroups = "groups";
+        uid = uid.slice(2);
+        break;
+      default:
+        alert("please select either user or group");
+        return;
+    }
 
     if (!moment(publishAt).isValid()) {
       alert("publishAt not valid: '" + publishAt + "'.");
@@ -65,7 +95,7 @@ class SurveyDataService {
     var date = dt.slice(0, 10);
     var time = dt.slice(11, 19);
 
-    return http.post(`/users/${uid}/schedule/survey/${sid}/${date}/${date}/${time}++++/0`);
+    return http.post(`/${usersOrGroups}/${uid}/schedule/survey/${sid}/${date}/${date}/${time}++++/0`);
   }
 
   scheduleSurveySeries(sid, uid, startYMD, endYMD, hm1, hm2, hm3, hm4, hm5, plusMinusRandomMinutes) {

@@ -31,13 +31,20 @@
       <h4>
         <img class="mb-2 mr-1" src="/assets/img/person-plus.svg" width="24" height="24" />
         Schedule now
-      </h4>userId:
+      </h4>
       <form class="edit-form">
         <div class="input-group">
           <select class="form-control" v-model="selectedAssignUserId">
+            <option disabled>—Groups—</option>
+            <option
+              v-for="g in allGroups"
+              v-bind:value="'g:' + g.groupId"
+              v-bind:key="g.groupId"
+            >{{ g.groupId }}</option>
+            <option disabled>—Users—</option>
             <option
               v-for="u in allUsers"
-              v-bind:value="u.userId"
+              v-bind:value="'u:' + u.userId"
               v-bind:key="u.userId"
             >{{ u.userId }}</option>
           </select>
@@ -55,13 +62,20 @@
       <h4 class="mt-4">
         <img class="mb-2 mr-1" src="/assets/img/person-plus.svg" width="24" height="24" />
         Schedule once
-      </h4>userId:
+      </h4>
       <form class="edit-form">
         <div class="input-group">
           <select class="form-control" v-model="selectedScheduleOnceUserId">
+            <option disabled>—Groups—</option>
+            <option
+              v-for="g in allGroups"
+              v-bind:value="'g:' + g.groupId"
+              v-bind:key="g.groupId"
+            >{{ g.groupId }}</option>
+            <option disabled>—Users—</option>
             <option
               v-for="u in allUsers"
-              v-bind:value="u.userId"
+              v-bind:value="'u:' + u.userId"
               v-bind:key="u.userId"
             >{{ u.userId }}</option>
           </select>
@@ -377,10 +391,8 @@ export default {
       allUsers: [],
       allGroups: [],
       selectedAssignUserId: "",
-      selectedAssignGroupId: "",
 
       selectedScheduleOnceUserId: "",
-      selectedScheduleOnceGroupId: "",
       scheduleOnceDatetime: "",
 
       selectedScheduleSeriesUserId: "",
