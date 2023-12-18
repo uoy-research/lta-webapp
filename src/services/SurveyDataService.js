@@ -46,18 +46,26 @@ class SurveyDataService {
   }
 
   assignSurvey(sid, uid) {
-    return http.post(`/users/${uid}/surveys/${sid}`);
+
+    var now = new Date().toISOString();
+    var date = now.slice(0, 10);
+    var time = now.slice(11, 19);
+
+    return http.post(`/users/${uid}/schedule/survey/${sid}/${date}/${date}/${time}++++/0`);
   }
 
   scheduleSurveyOnce(sid, uid, publishAt) {
-    //alert("publishAt: '" + moment(publishAt.format("YYYY-MM-DD HH:mm")) + "'.");
+
     if (!moment(publishAt).isValid()) {
       alert("publishAt not valid: '" + publishAt + "'.");
       return;
     }
 
-    var publishAtMillis = moment(publishAt).utc().unix();
-    return http.post(`/users/${uid}/schedule/survey/${sid}/${publishAtMillis}`);
+    var dt = new Date(publishAt).toISOString();
+    var date = dt.slice(0, 10);
+    var time = dt.slice(11, 19);
+
+    return http.post(`/users/${uid}/schedule/survey/${sid}/${date}/${date}/${time}++++/0`);
   }
 
   scheduleSurveySeries(sid, uid, gid, startYMD, endYMD, hm1, hm2, hm3, hm4, hm5, plusMinusRandomMinutes) {
@@ -76,17 +84,6 @@ class SurveyDataService {
       return;
     }
 
-    // var startDateUtcUnix = moment(startYMD).unix();
-    // var endDateUtcUnix = moment(endYMD).unix();
-
-    // alert(startDate);
-    // alert(moment(startDate));
-    // alert(moment(startDate).unix());
-    // alert(moment(startDate).format('X'));
-
-    // alert(moment(startDate).format("YYYY-MM-DD"));
-    // alert(moment(startDate).unix().format("YYYY-MM-DD"));
-    
     if (uid) {
       return http.post(`/users/${uid}/schedule/survey/${sid}/${startYMD}/${endYMD}/${hm1}+${hm2}+${hm3}+${hm4}+${hm5}/${plusMinusRandomMinutes}`);
     } else if (gid) {
