@@ -30,7 +30,7 @@
     <div class="mt-5 mb-5">
       <h4>
         <img class="mb-2 mr-1" src="/assets/img/person-plus.svg" width="24" height="24" />
-        Assign and Publish
+        Schedule now
       </h4>userId:
       <form class="edit-form">
         <div class="input-group">
@@ -54,7 +54,7 @@
 
       <h4 class="mt-4">
         <img class="mb-2 mr-1" src="/assets/img/person-plus.svg" width="24" height="24" />
-        Schedule Once
+        Schedule once
       </h4>userId:
       <form class="edit-form">
         <div class="input-group">
@@ -79,7 +79,7 @@
 
       <h4 class="mt-4">
         <img class="mb-2 mr-1" src="/assets/img/person-plus.svg" width="24" height="24" />
-        Schedule Series
+        Schedule series
       </h4>
       <form class="edit-form">
         userId:
