@@ -85,6 +85,7 @@
         userId:
         <div class="input-group">
           <select class="form-control" v-model="selectedScheduleSeriesUserId">
+            <option value=""></option>
             <option
               v-for="u in allUsers"
               v-bind:value="u.userId"
@@ -95,6 +96,7 @@
         groupId:
         <div class="input-group">
           <select class="form-control" v-model="selectedScheduleSeriesGroupId">
+            <option value=""></option>
             <option
               v-for="g in allGroups"
               v-bind:value="g.groupId"
@@ -380,8 +382,10 @@ export default {
       allUsers: [],
       allGroups: [],
       selectedAssignUserId: "",
+      selectedAssignGroupId: "",
 
       selectedScheduleOnceUserId: "",
+      selectedScheduleOnceGroupId: "",
       scheduleOnceDatetime: "",
 
       selectedScheduleSeriesUserId: "",
