@@ -54,7 +54,7 @@
               type="button"
               class="btn btn-primary ml-2"
               @click="assignSurvey"
-            >Assign and Publish</button>
+            >Schedule Now</button>
           </span>
         </div>
       </form>
@@ -81,7 +81,7 @@
           </select>
         </div>
         <div>
-          publishAt:
+          Publish at:
           <input type="datetime-local" step="2" width="300px" class="form-control" v-model="scheduleOnceDatetime" />
         </div>
         <div class="mt-3">
@@ -96,7 +96,7 @@
         Schedule series
       </h4>
       <form class="edit-form">
-        userId:
+        User ID:
         <div class="input-group">
           <select class="form-control" v-model="selectedScheduleSeriesUserId">
             <option disabled>—Groups—</option>
@@ -114,9 +114,9 @@
           </select>
         </div>
         <div>
-          scheduleStartDate:
+          Start date:
           <input type="date" width="300px" class="form-control" v-model="scheduleStartDate" />
-          scheduleEndDate:
+          End date:
           <input type="date" width="300px" class="form-control" v-model="scheduleEndDate" />
         </div>
 
@@ -130,7 +130,7 @@
         </div>
 
         <div>
-          randomizeMinutes:
+          Randomize minutes:
           <input type="number" min="0" class="form-control" v-model="randomizeMinutes" />
         </div>
 
@@ -160,10 +160,10 @@
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 10%">User</th>
-            <th style="width: 20%">createdAt</th>
-            <th style="width: 20%">publishAt</th>
-            <th style="width: 10%">Notif</th>
-            <th style="width: 10%">Track</th>
+            <th style="width: 20%">Created at</th>
+            <th style="width: 20%">Publish at</th>
+            <th style="width: 10%">Notification</th>
+            <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
           </tr>
         </thead>
@@ -262,9 +262,9 @@
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 10%">Group</th>
-            <th style="width: 20%">createdAt</th>
-            <th style="width: 20%">publishFrom</th>
-            <th style="width: 20%">publishTo</th>
+            <th style="width: 20%">Created at</th>
+            <th style="width: 20%">Publish from</th>
+            <th style="width: 20%">Publish to</th>
           </tr>
         </thead>
         <tbody>
@@ -496,7 +496,7 @@ export default {
       SurveyDataService.update(this.currentSurvey._id, this.currentSurvey)
         .then(response => {
           console.log(response.data);
-          this.updateMessage = "The Survey was updated successfully!";
+          this.updateMessage = "The survey was updated successfully!";
           alert(this.updateMessage);
         })
         .catch(e => {
@@ -513,7 +513,7 @@ export default {
       )
         .then(response => {
           console.log(response.data);
-          this.assignMessage = "The user has been assigned the survey.";
+          this.assignMessage = "The survey has been scheduled.";
           alert(this.assignMessage);
           this.getAssignmentsOfSurvey(this.currentSurvey._id)
         })

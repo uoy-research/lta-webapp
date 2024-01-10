@@ -34,9 +34,9 @@
         <table class="table table-hover">
           <thead class="thead-light">
             <tr>
-              <th style="width: 25%">groupId</th>
-              <th style="width: 25%">member count</th>
-              <th style="width: 50%">members</th>
+              <th style="width: 25%">Group ID</th>
+              <th style="width: 25%">Member count</th>
+              <th style="width: 50%">Members</th>
             </tr>
           </thead>
           <tbody>
@@ -73,10 +73,10 @@
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Survey</th>
-            <th style="width: 20%">Created At</th>
-            <th style="width: 15%">Publish At</th>
-            <th style="width: 10%">Notif</th>
-            <th style="width: 10%">Track</th>
+            <th style="width: 20%">Created at</th>
+            <th style="width: 15%">Publish at</th>
+            <th style="width: 10%">Notifications</th>
+            <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
           </tr>
         </thead>
@@ -136,10 +136,10 @@
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Group</th>
             <th style="width: 20%">Survey</th>
-            <th style="width: 20%">Created At</th>
-            <th style="width: 20%">Publish At</th>
-            <th style="width: 10%">Notif</th>
-            <th style="width: 10%">Track</th>
+            <th style="width: 20%">Created at</th>
+            <th style="width: 20%">Publish at</th>
+            <th style="width: 10%">Notifications</th>
+            <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
           </tr>
         </thead>

@@ -24,13 +24,13 @@
       <table class="table table-hover">
         <thead class="thead-light">
           <tr>
-            <th style="width: 20%">userId</th>
-            <th style="width: 30%">timezone</th>
-            <th style="width: 20%" tooltip="deviceToken">
-              <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="deviceToken" />
+            <th style="width: 20%">User ID</th>
+            <th style="width: 30%">Timezone</th>
+            <th style="width: 20%" tooltip="Device token">
+              <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="Device token" />
             </th>
-            <th style="width: 15%">os</th>
-            <th style="width: 15%">v</th>
+            <th style="width: 15%">OS</th>
+            <th style="width: 15%">Version</th>
           </tr>
         </thead>
         <tbody>
@@ -76,9 +76,9 @@
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Survey</th>
-            <th style="width: 20%">createdAt</th>
-            <th style="width: 20%">publishFrom</th>
-            <th style="width: 20%">publishTo</th>
+            <th style="width: 20%">Created at</th>
+            <th style="width: 20%">Publish from</th>
+            <th style="width: 20%">Publish to</th>
           </tr>
         </thead>
         <tbody>

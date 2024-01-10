@@ -21,9 +21,9 @@
         <table class="table table-hover">
           <thead class="thead-light">
             <tr>
-              <th style="width: 25%">groupId</th>
-              <th style="width: 25%">member count</th>
-              <th style="width: 50%">members</th>
+              <th style="width: 25%">Group ID</th>
+              <th style="width: 25%">Member count</th>
+              <th style="width: 50%">Members</th>
             </tr>
           </thead>
           <tbody>

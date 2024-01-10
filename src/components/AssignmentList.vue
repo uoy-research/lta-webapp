@@ -29,11 +29,11 @@
           <thead class="thead-light">
             <tr>
               <th style="width: 20%">Assignment</th>
-              <th style="width: 22%">publish</th>
+              <th style="width: 22%">Publish time</th>
               <th style="width: 14%">Assignee</th>
               <th style="width: 25%">Survey</th>
-              <th style="width: 8%">Notif</th>
-              <th style="width: 8%">Track</th>
+              <th style="width: 8%">Notifications</th>
+              <th style="width: 8%">Tracking</th>
             </tr>
           </thead>
           <tbody>

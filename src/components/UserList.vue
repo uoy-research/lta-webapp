@@ -21,13 +21,13 @@
         <table class="table table-hover">
           <thead class="thead-light">
             <tr>
-              <th style="width: 20%">userId</th>
-              <th style="width: 30%">timezone</th>
-              <th style="width: 20%" tooltip="deviceToken">
+              <th style="width: 20%">User ID</th>
+              <th style="width: 30%">Timezone</th>
+              <th style="width: 20%" tooltip="Device Token">
                 <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="deviceToken"/>
               </th>
-              <th style="width: 15%">os</th>
-              <th style="width: 15%">v</th>
+              <th style="width: 15%">OS</th>
+              <th style="width: 15%">Version</th>
             </tr>
           </thead>
           <tbody>
