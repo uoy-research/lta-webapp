@@ -50,7 +50,7 @@
       <div class="col-md-2 ml-4">
         <div v-if="currentSurvey._id != ''">
           <tableDetailsHeader
-            icon="file"
+            icon="files"
             :text="currentSurvey.name"
             :href="'/surveys/' + currentSurvey._id"
           />

@@ -420,10 +420,16 @@ export default {
   },
   computed: {
      userAssignments: function() {
-       return this.assignments.filter(a => a.userId)
+       return this.assignments
+        .filter(a => a.userId)
+        .toSorted()
+        .reverse();
      },
      groupAssignments: function() {
-       return this.assignments.filter(a => a.groupId);
+       return this.assignments
+        .filter(a => a.groupId)
+        .toSorted()
+        .reverse();
      }
   },
   methods: {

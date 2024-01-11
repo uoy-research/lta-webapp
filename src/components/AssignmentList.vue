@@ -39,7 +39,7 @@
           <tbody>
             <tr
               :class="{ active: index == currentIndex }"
-              v-for="(assignment, index) in assignments"
+              v-for="(assignment, index) in sortedAssignments"
               :key="index"
               @click="setActive(assignment, index)"
               @dblclick="goToAssignment(assignment)"
@@ -197,7 +197,18 @@ export default {
   mounted() {
     moment.locale("en-ca");
     this.retrieveAssignments();
-  }
+  },
+
+  computed: {
+    sortedAssignments() {
+      return this.assignments.toSorted((a, b) => {
+        let realA = a.publishFrom || a.publishAt
+        let realB = b.publishFrom || b.publishAt
+
+        return realB.localeCompare(realA);
+      });
+    }
+  },
 };
 </script>
 

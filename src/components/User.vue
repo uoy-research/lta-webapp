@@ -84,7 +84,7 @@
         </thead>
         <tbody>
           <tr
-            v-for="(assignment, index) in assignments.filter(a => !a.groupId)"
+            v-for="(assignment, index) in sortedAssignments.filter(a => !a.groupId)"
             :key="index"
             @dblclick="goToAssignment(assignment)"
           >
@@ -147,7 +147,7 @@
         </thead>
         <tbody>
           <tr
-            v-for="(assignment, index) in assignments.filter(a => a.groupId)"
+            v-for="(assignment, index) in sortedAssignments.filter(a => a.groupId)"
             :key="index"
             @dblclick="goToAssignment(assignment)"
           >
@@ -273,7 +273,13 @@ export default {
     this.getUser(this.$route.params.id);
     this.getAssignmentsOfUser(this.$route.params.id);
     this.getGroupsOfUser(this.$route.params.id);
-  }
+  },
+
+  computed: {
+    sortedAssignments() {
+      return this.assignments.toSorted().reverse();
+    }
+  },
 };
 </script>
 
