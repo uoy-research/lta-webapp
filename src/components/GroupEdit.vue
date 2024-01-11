@@ -15,7 +15,7 @@
       <thead class="thead-light">
         <tr>
           <th style="width: 20%">User</th>
-          <th style="width: 40%">timezone</th>
+          <th style="width: 40%">Timezone</th>
           <th style="width: 40%">Member</th>
         </tr>
       </thead>

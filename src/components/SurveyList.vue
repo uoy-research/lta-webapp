@@ -55,9 +55,9 @@
             :href="'/surveys/' + currentSurvey._id"
           />
           <table class="table">
-            <trDetail label="title" :text="currentSurvey.title" />
+            <trDetail label="Title" :text="currentSurvey.title" />
             <trDetail
-              label="createdAt" :time="currentSurvey.createdAt"
+              label="Created at" :time="currentSurvey.createdAt"
             />
             <trDetail label="Questions" :text="currentSurvey.questions.length" />
           </table>

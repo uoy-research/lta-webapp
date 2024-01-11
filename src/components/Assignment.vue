@@ -7,11 +7,11 @@
         <h4 class="col">Details</h4>
 
         <table class="table">
-          <trDetail label="_id" :codeDetail="assignment._id" />
-          <trDetail label="userId" :text="assignment.userId" :href="'/users/' + assignment.userId" />
-          <trDetail label="groupId" :text="assignment.groupId" :href="'/groups/' + assignment.groupId" />
+          <trDetail label="ID" :codeDetail="assignment._id" />
+          <trDetail label="User" :text="assignment.userId" :href="'/users/' + assignment.userId" />
+          <trDetail label="Group" :text="assignment.groupId" :href="'/groups/' + assignment.groupId" />
           <trDetail
-            label="survey"
+            label="Survey"
             :text="assignment.survey.name"
             :href="'/surveys/' + assignment.survey._id"
             :subtext="assignment.survey.title"
@@ -19,15 +19,15 @@
             numberSingular="question"
             numberPlural="questions"
           />
-          <trDetail label="createdAt" :time="assignment.createdAt" />
-          <trDetail label="publishAt" :time="assignment.publishAt" />
-          <trDetail label="publishFrom" :time="assignment.publishFrom" />
-          <trDetail label="publishTo" :time="assignment.publishTo" />
-          <trDetail label="publishNotifiedAt" :time="assignment.publishNotifiedAt" />
-          <trDetail label="expireAt" :time="assignment.expireAt" />
-          <trDetail label="expireNotifiedAt" :time="assignment.expireNotifiedAt" />
-          <trDetail label="firstOpenedAt" :time="assignment.firstOpenedAt" />
-          <trDetail label="lastOpenedAt" :time="assignment.lastOpenedAt" />
+          <trDetail label="Created at" :time="assignment.createdAt" />
+          <trDetail label="Published at" :time="assignment.publishAt" />
+          <trDetail label="Published from" :time="assignment.publishFrom" />
+          <trDetail label="Published to" :time="assignment.publishTo" />
+          <trDetail label="Publish notified at" :time="assignment.publishNotifiedAt" />
+          <trDetail label="Expired at" :time="assignment.expireAt" />
+          <trDetail label="Expiry notified at" :time="assignment.expireNotifiedAt" />
+          <trDetail label="First opened at" :time="assignment.firstOpenedAt" />
+          <trDetail label="Last opened at" :time="assignment.lastOpenedAt" />
           <trDetail
             label="Answered"
             :text="assignment.dataset ? undefined : 'Unanswered'"

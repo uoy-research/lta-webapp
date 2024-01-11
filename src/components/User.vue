@@ -7,14 +7,14 @@
         <h4>Details</h4>
 
         <table class="table">
-          <trDetail label="_id" :codeDetail="user._id" />
-          <trDetail label="userId" :text="user.userId" />
-          <trDetail label="timezone" :text="user.timezone" />
-          <trDetail label="deviceToken" :codeDetail="user.deviceToken" />
-          <trDetail label="versionNumber" :codeDetail="user.versionNumber" />
-          <trDetail label="os" :codeDetail="user.os" />
-          <trDetail label="createdAt" :time="user.createdAt" />
-          <trDetail label="updatedAt" :time="user.updatedAt" />
+          <trDetail label="ID" :codeDetail="user._id" />
+          <trDetail label="User" :text="user.userId" />
+          <trDetail label="Timezone" :text="user.timezone" />
+          <trDetail label="Device token" :codeDetail="user.deviceToken" />
+          <trDetail label="Version" :codeDetail="user.versionNumber" />
+          <trDetail label="OS" :codeDetail="user.os" />
+          <trDetail label="Created at" :time="user.createdAt" />
+          <trDetail label="Updated at" :time="user.updatedAt" />
           <!-- <tr
               v-for="(group, index) in groups" :key="index"
             >
@@ -74,7 +74,7 @@
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Survey</th>
             <th style="width: 20%">Created at</th>
-            <th style="width: 15%">Publish at</th>
+            <th style="width: 15%">Published at</th>
             <th style="width: 10%">Notifications</th>
             <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
@@ -97,13 +97,13 @@
                 class="mr-1"
                 v-if="assignment.publishNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="publishNotifiedAt"
+                title="Publish notified at"
               />
               <img
                 class="mr-1"
                 v-if="assignment.expireNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="expireNotifiedAt"
+                title="Expiry notified at"
               />
             </td>
             <td>
@@ -111,13 +111,13 @@
                 class="mr-1"
                 v-if="assignment.firstOpenedAt"
                 src="/assets/img/envelope-open.svg"
-                title="firstOpenedAt"
+                title="First opened at"
               />
               <img
                 class="mr-1"
                 v-if="assignment.dataset"
                 src="/assets/img/check.svg"
-                title="dataset"
+                title="Dataset"
               />
             </td>
             <td>{{ assignment.dataset ? getCalendar(assignment.dataset.createdAt) : "Unanswered"}}</td>
@@ -137,7 +137,7 @@
             <th style="width: 20%">Group</th>
             <th style="width: 20%">Survey</th>
             <th style="width: 20%">Created at</th>
-            <th style="width: 20%">Publish at</th>
+            <th style="width: 20%">Published at</th>
             <th style="width: 10%">Notifications</th>
             <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
@@ -163,13 +163,13 @@
                 class="mr-1"
                 v-if="assignment.publishNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="publishNotifiedAt"
+                title="Publish notified at"
               />
               <img
                 class="mr-1"
                 v-if="assignment.expireNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="expireNotifiedAt"
+                title="Expiry notified at"
               />
             </td>
             <td>
@@ -177,13 +177,13 @@
                 class="mr-1"
                 v-if="assignment.firstOpenedAt"
                 src="/assets/img/envelope-open.svg"
-                title="firstOpenedAt"
+                title="First opened at"
               />
               <img
                 class="mr-1"
                 v-if="assignment.dataset"
                 src="/assets/img/check.svg"
-                title="dataset"
+                title="Dataset"
               />
             </td>
             <td>{{ assignment.dataset ? getCalendar(assignment.dataset.createdAt) : "Unanswered"}}</td>

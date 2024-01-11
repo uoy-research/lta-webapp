@@ -7,10 +7,10 @@
         <h4>Details</h4>
 
         <table class="table">
-          <trDetail label="_id" :codeDetail="group._id" />
-          <trDetail label="groupId" :text="group.groupId" />
-          <trDetail label="createdAt" :time="group.createdAt" />
-          <trDetail label="updatedAt" :time="group.updatedAt" />
+          <trDetail label="ID" :codeDetail="group._id" />
+          <trDetail label="Group" :text="group.groupId" />
+          <trDetail label="Created at" :time="group.createdAt" />
+          <trDetail label="Updated at" :time="group.updatedAt" />
         </table>
       </div>
     </div>
@@ -44,7 +44,7 @@
             </td>
             <td class="td-wrap">{{user.timezone}}</td>
             <td class="td-wrap code-detail">
-              <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="deviceToken" />
+              <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="Device token" />
             </td>
             <td class="td-wrap">{{user.os}}</td>
             <td class="td-wrap">{{user.versionNumber}}</td>

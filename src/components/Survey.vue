@@ -7,10 +7,10 @@
         <h4>Details</h4>
 
         <table class="table">
-          <trDetail label="name" :text="currentSurvey.name" />
-          <trDetail label="title" :text="currentSurvey.title" />
-          <trDetail label="_id" :codeDetail="currentSurvey._id" />
-          <trDetail label="createdAt" :time="currentSurvey.createdAt" />
+          <trDetail label="Name" :text="currentSurvey.name" />
+          <trDetail label="Title" :text="currentSurvey.title" />
+          <trDetail label="ID" :codeDetail="currentSurvey._id" />
+          <trDetail label="Created at" :time="currentSurvey.createdAt" />
           <trDetail
             label="Questions"
             :number="currentSurvey.questions.length"
@@ -161,7 +161,7 @@
             <th style="width: 20%">Assignment</th>
             <th style="width: 10%">User</th>
             <th style="width: 20%">Created at</th>
-            <th style="width: 20%">Publish at</th>
+            <th style="width: 20%">Published at</th>
             <th style="width: 10%">Notification</th>
             <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
@@ -184,13 +184,13 @@
                 class="mr-1"
                 v-if="assignment.publishNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="publishNotifiedAt"
+                title="Publish notified at"
               />
               <img
                 class="mr-1"
                 v-if="assignment.expireNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="expireNotifiedAt"
+                title="Expiry notified at"
               />
             </td>
             <td>
@@ -198,13 +198,13 @@
                 class="mr-1"
                 v-if="assignment.firstOpenedAt"
                 src="/assets/img/envelope-open.svg"
-                title="firstOpenedAt"
+                title="First opened at"
               />
               <img
                 class="mr-1"
                 v-if="assignment.dataset"
                 src="/assets/img/check.svg"
-                title="dataset"
+                title="Dataset"
               />
             </td>
             <td>{{ assignment.dataset ? getCalendar(assignment.dataset.createdAt) : "Unanswered" }}</td>

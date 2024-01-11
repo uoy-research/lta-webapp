@@ -24,7 +24,7 @@
               <th style="width: 20%">User ID</th>
               <th style="width: 30%">Timezone</th>
               <th style="width: 20%" tooltip="Device Token">
-                <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="deviceToken"/>
+                <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="Device token"/>
               </th>
               <th style="width: 15%">OS</th>
               <th style="width: 15%">Version</th>
@@ -43,7 +43,7 @@
               </td>
               <td class="td-wrap">{{user.timezone}}</td>
               <td class="td-wrap code-detail">
-                <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="deviceToken"/>
+                <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="Device token"/>
               </td>
               <td class="td-wrap">{{user.os}}</td>
               <td class="td-wrap">{{user.versionNumber}}</td>
@@ -61,13 +61,13 @@
           />
 
           <table class="table">
-            <trDetail label="userId" :codeDetail="currentUser.userId" />
-            <trDetail label="timezone" :codeDetail="currentUser.timezone" />
-            <trDetail label="deviceToken" :codeDetail="currentUser.deviceToken" />
-            <trDetail label="os" :codeDetail="currentUser.os" />
-            <trDetail label="versionNumber" :codeDetail="currentUser.versionNumber" />
-            <trDetail label="createdAt" :time="currentUser.createdAt" />
-            <trDetail label="updatedAt" :time="currentUser.updatedAt" />
+            <trDetail label="User" :codeDetail="currentUser.userId" />
+            <trDetail label="Timezone" :codeDetail="currentUser.timezone" />
+            <trDetail label="Device token" :codeDetail="currentUser.deviceToken" />
+            <trDetail label="OS" :codeDetail="currentUser.os" />
+            <trDetail label="Version" :codeDetail="currentUser.versionNumber" />
+            <trDetail label="Created at" :time="currentUser.createdAt" />
+            <trDetail label="Updated at" :time="currentUser.updatedAt" />
           </table>
         </div>
       </div>

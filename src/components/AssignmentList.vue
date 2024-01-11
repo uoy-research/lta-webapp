@@ -63,12 +63,12 @@
                 <a :href="'/surveys/' + assignment.survey._id">{{ assignment.survey.name }}</a>
               </td>
               <td>
-                <img class="mr-1" v-if="assignment.publishNotifiedAt" src="assets/img/phone-vibrate.svg" title="publishNotifiedAt"/>
-                <img class="mr-1" v-if="assignment.expireNotifiedAt"  src="assets/img/phone-vibrate.svg" title="expireNotifiedAt"/>
+                <img class="mr-1" v-if="assignment.publishNotifiedAt" src="assets/img/phone-vibrate.svg" title="Publish notified at"/>
+                <img class="mr-1" v-if="assignment.expireNotifiedAt"  src="assets/img/phone-vibrate.svg" title="Expiry notified at"/>
               </td>
               <td>
-                <img class="mr-1" v-if="assignment.firstOpenedAt" src="assets/img/envelope-open.svg" title="firstOpenedAt"/>
-                <img class="mr-1" v-if="assignment.dataset" src="assets/img/check.svg" title="dataset"/>
+                <img class="mr-1" v-if="assignment.firstOpenedAt" src="assets/img/envelope-open.svg" title="First opened at"/>
+                <img class="mr-1" v-if="assignment.dataset" src="assets/img/check.svg" title="Dataset"/>
               </td>
             </tr>
           </tbody>
@@ -97,8 +97,8 @@
               numberSingular="question"
               numberPlural="questions"
             />
-            <trDetail label="createdAt" :time="currentAssignment.createdAt" />
-            <trDetail label="publishAt" :time="currentAssignment.publishAt" />
+            <trDetail label="Created at" :time="currentAssignment.createdAt" />
+            <trDetail label="Published at" :time="currentAssignment.publishAt" />
             <trDetail
               label="Answered"
               :text="currentAssignment.dataset ? undefined : 'Unanswered'"
