@@ -1,6 +1,6 @@
 <template>
   <div>
-    <hLargeIconHeader :text="currentSurvey.name" :icon="'file'"></hLargeIconHeader>
+    <hLargeIconHeader :text="currentSurvey.name" :icon="'files'"></hLargeIconHeader>
 
     <div class="row">
       <div class="col">
