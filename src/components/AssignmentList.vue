@@ -29,7 +29,7 @@
           <thead class="thead-light">
             <tr>
               <th style="width: 20%">Assignment</th>
-              <th style="width: 22%">Publish time</th>
+              <th style="width: 22%">Publish date</th>
               <th style="width: 14%">Assignee</th>
               <th style="width: 25%">Survey</th>
               <th style="width: 8%">Notifications</th>

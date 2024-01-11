@@ -7,9 +7,11 @@
         <h4>Details</h4>
 
         <table class="table">
+          <!--
           <trDetail label="Name" :text="currentSurvey.name" />
-          <trDetail label="Title" :text="currentSurvey.title" />
           <trDetail label="ID" :codeDetail="currentSurvey._id" />
+          -->
+          <trDetail label="Title" :text="currentSurvey.title" />
           <trDetail label="Creation date" :time="currentSurvey.createdAt" />
           <trDetail
             label="Questions"

@@ -7,12 +7,14 @@
         <h4>Details</h4>
 
         <table class="table">
+          <!--
           <trDetail label="ID" :codeDetail="user._id" />
           <trDetail label="User" :text="user.userId" />
+          -->
           <trDetail label="Timezone" :text="user.timezone" />
           <trDetail label="Device token" :codeDetail="user.deviceToken" />
-          <trDetail label="Version" :codeDetail="user.versionNumber" />
           <trDetail label="OS" :codeDetail="user.os" />
+          <trDetail label="Version" :codeDetail="user.versionNumber" />
           <trDetail label="Creation date" :time="user.createdAt" />
           <trDetail label="Last updated" :time="user.updatedAt" />
           <!-- <tr
