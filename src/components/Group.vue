@@ -78,9 +78,9 @@
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Survey</th>
-            <th style="width: 20%">Created at</th>
-            <th style="width: 20%">Publish from</th>
-            <th style="width: 20%">Publish to</th>
+            <th style="width: 20%">Creation date</th>
+            <th style="width: 20%">Published from</th>
+            <th style="width: 20%">Published to</th>
           </tr>
         </thead>
         <tbody>

@@ -264,7 +264,7 @@
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 10%">Group</th>
-            <th style="width: 20%">Created at</th>
+            <th style="width: 20%">Creation date</th>
             <th style="width: 20%">Publish from</th>
             <th style="width: 20%">Publish to</th>
           </tr>

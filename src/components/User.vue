@@ -36,7 +36,7 @@
         <table class="table table-hover">
           <thead class="thead-light">
             <tr>
-              <th style="width: 25%">Group ID</th>
+              <th style="width: 25%">Group</th>
               <th style="width: 25%">Member count</th>
               <th style="width: 50%">Members</th>
             </tr>
@@ -75,8 +75,8 @@
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Survey</th>
-            <th style="width: 20%">Created at</th>
-            <th style="width: 15%">Published at</th>
+            <th style="width: 20%">Creation date</th>
+            <th style="width: 15%">Publish date</th>
             <th style="width: 10%">Notifications</th>
             <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
@@ -138,8 +138,8 @@
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Group</th>
             <th style="width: 20%">Survey</th>
-            <th style="width: 20%">Created at</th>
-            <th style="width: 20%">Published at</th>
+            <th style="width: 20%">Creation date</th>
+            <th style="width: 20%">Publish date</th>
             <th style="width: 10%">Notifications</th>
             <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>

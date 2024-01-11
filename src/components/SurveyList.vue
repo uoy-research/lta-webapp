@@ -17,7 +17,7 @@
           <thead class="thead-light">
             <tr>
               <th style="width: 40%">Name</th>
-              <th style="width: 40%">Created at</th>
+              <th style="width: 40%">Creation date</th>
               <th style="width: 20%">Questions</th>
             </tr>
           </thead>
