@@ -136,9 +136,12 @@ export default {
       currentIndex: -1,
       currentAssignment: null,
       searchInput: "",
+      /*
       filterFrom: moment()
         .startOf("day")
         .format("YYYY-MM-DD"),
+      */
+      filterFrom: "",
       filterTo: moment()
         .endOf("day")
         .format("YYYY-MM-DD")
