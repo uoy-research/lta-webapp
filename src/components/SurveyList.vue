@@ -13,7 +13,7 @@
 
     <div class="list row mt-4">
       <div class="col-md-4">
-        <table class="table table-hover">
+        <div class="scrollable"><table class="table table-hover">
           <thead class="thead-light">
             <tr>
               <th style="width: 40%">Name</th>
@@ -36,7 +36,7 @@
               <td class="td-wrap">{{ survey.questions.length }}</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <table class="table">
           <tr>

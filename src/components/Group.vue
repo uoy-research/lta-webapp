@@ -23,7 +23,7 @@
         Members
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">User ID</th>
@@ -52,7 +52,7 @@
             <td class="td-wrap">{{user.versionNumber}}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <table class="table">
@@ -73,7 +73,7 @@
         Group Assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
@@ -98,7 +98,7 @@
             <td>{{ getCalendar(assignment.publishTo) }}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
   </div>
 </template>

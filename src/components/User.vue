@@ -33,7 +33,7 @@
         <img class="mb-1 mr-1" src="/assets/img/people.svg" width="24" height="24" />
         Groups
       </h3>
-        <table class="table table-hover">
+        <div class="scrollable"><table class="table table-hover">
           <thead class="thead-light">
             <tr>
               <th style="width: 25%">Group</th>
@@ -56,7 +56,7 @@
               <td class="td-wrap">{{group.userIds.join(", ")}}</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
 
     <div>
@@ -70,7 +70,7 @@
         User Assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
@@ -125,14 +125,14 @@
             <td>{{ assignment.dataset ? getCalendar(assignment.dataset.createdAt) : "Unanswered"}}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <h4 class="mt-5">
         <img class="mb-1 mr-1" src="/assets/img/people.svg" width="24" height="24" />
         Group Assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
@@ -191,7 +191,7 @@
             <td>{{ assignment.dataset ? getCalendar(assignment.dataset.createdAt) : "Unanswered"}}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
   </div>
 </template>

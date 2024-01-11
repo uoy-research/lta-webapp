@@ -157,7 +157,7 @@
         User assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
@@ -213,7 +213,7 @@
             <td />
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="mt-4" v-if="!isGeneratingDownload && !(datasetCsv || datasetJson)">
         <span class="m-2">
@@ -259,7 +259,7 @@
         Group assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
@@ -284,7 +284,7 @@
             <td>{{ getCalendar(assignment.publishTo) }}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
 
       <div class="mt-4" v-if="!isGeneratingResultsDownload && !(datasetResultsCsv || datasetResultsJson)">
