@@ -13,8 +13,8 @@
           <trDetail label="Device token" :codeDetail="user.deviceToken" />
           <trDetail label="Version" :codeDetail="user.versionNumber" />
           <trDetail label="OS" :codeDetail="user.os" />
-          <trDetail label="Created at" :time="user.createdAt" />
-          <trDetail label="Updated at" :time="user.updatedAt" />
+          <trDetail label="Creation date" :time="user.createdAt" />
+          <trDetail label="Last updated" :time="user.updatedAt" />
           <!-- <tr
               v-for="(group, index) in groups" :key="index"
             >
@@ -163,13 +163,13 @@
                 class="mr-1"
                 v-if="assignment.publishNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="Publish notified at"
+                title="Publish notified"
               />
               <img
                 class="mr-1"
                 v-if="assignment.expireNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="Expiry notified at"
+                title="Expiry notified"
               />
             </td>
             <td>
@@ -177,7 +177,7 @@
                 class="mr-1"
                 v-if="assignment.firstOpenedAt"
                 src="/assets/img/envelope-open.svg"
-                title="First opened at"
+                title="First opened"
               />
               <img
                 class="mr-1"

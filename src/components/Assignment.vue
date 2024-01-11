@@ -19,15 +19,19 @@
             numberSingular="question"
             numberPlural="questions"
           />
-          <trDetail label="Created at" :time="assignment.createdAt" />
-          <trDetail label="Published at" :time="assignment.publishAt" />
+          <trDetail label="Creation date" :time="assignment.createdAt" />
+          <trDetail label="Publish date" :time="assignment.publishAt" />
           <trDetail label="Published from" :time="assignment.publishFrom" />
           <trDetail label="Published to" :time="assignment.publishTo" />
-          <trDetail label="Publish notified at" :time="assignment.publishNotifiedAt" />
-          <trDetail label="Expired at" :time="assignment.expireAt" />
-          <trDetail label="Expiry notified at" :time="assignment.expireNotifiedAt" />
-          <trDetail label="First opened at" :time="assignment.firstOpenedAt" />
-          <trDetail label="Last opened at" :time="assignment.lastOpenedAt" />
+          <!--
+          <trDetail label="Publish notification date" :time="assignment.publishNotifiedAt" />
+          -->
+          <trDetail label="Expiry date" :time="assignment.expireAt" />
+          <trDetail label="Expiry notification date" :time="assignment.expireNotifiedAt" />
+          <!--
+          <trDetail label="First opened date" :time="assignment.firstOpenedAt" />
+          <trDetail label="Last opened date" :time="assignment.lastOpenedAt" />
+          -->
           <trDetail
             label="Answered"
             :text="assignment.dataset ? undefined : 'Unanswered'"

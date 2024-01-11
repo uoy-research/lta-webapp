@@ -97,8 +97,8 @@
               numberSingular="question"
               numberPlural="questions"
             />
-            <trDetail label="Created at" :time="currentAssignment.createdAt" />
-            <trDetail label="Published at" :time="currentAssignment.publishAt" />
+            <trDetail label="Creation date" :time="currentAssignment.createdAt" />
+            <trDetail label="Publish date" :time="currentAssignment.publishAt" />
             <trDetail
               label="Answered"
               :text="currentAssignment.dataset ? undefined : 'Unanswered'"

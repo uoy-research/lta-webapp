@@ -9,8 +9,8 @@
         <table class="table">
           <trDetail label="ID" :codeDetail="group._id" />
           <trDetail label="Group" :text="group.groupId" />
-          <trDetail label="Created at" :time="group.createdAt" />
-          <trDetail label="Updated at" :time="group.updatedAt" />
+          <trDetail label="Creation date" :time="group.createdAt" />
+          <trDetail label="Last updated" :time="group.updatedAt" />
         </table>
       </div>
     </div>

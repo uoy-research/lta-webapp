@@ -54,8 +54,8 @@
 
           <table class="table">
             <trDetail label="Group" :codeDetail="currentGroup.groupId" />
-            <trDetail label="Created at" :time="currentGroup.createdAt" />
-            <trDetail label="Updated at" :time="currentGroup.updatedAt" />
+            <trDetail label="Creation date" :time="currentGroup.createdAt" />
+            <trDetail label="Last updated" :time="currentGroup.updatedAt" />
           </table>
         </div>
       </div>

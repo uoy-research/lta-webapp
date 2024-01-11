@@ -10,7 +10,7 @@
           <trDetail label="Name" :text="currentSurvey.name" />
           <trDetail label="Title" :text="currentSurvey.title" />
           <trDetail label="ID" :codeDetail="currentSurvey._id" />
-          <trDetail label="Created at" :time="currentSurvey.createdAt" />
+          <trDetail label="Creation date" :time="currentSurvey.createdAt" />
           <trDetail
             label="Questions"
             :number="currentSurvey.questions.length"
@@ -160,8 +160,8 @@
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 10%">User</th>
-            <th style="width: 20%">Created at</th>
-            <th style="width: 20%">Published at</th>
+            <th style="width: 20%">Creation date</th>
+            <th style="width: 20%">Publish date</th>
             <th style="width: 10%">Notification</th>
             <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
@@ -184,13 +184,13 @@
                 class="mr-1"
                 v-if="assignment.publishNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="Publish notified at"
+                title="Publish notification date"
               />
               <img
                 class="mr-1"
                 v-if="assignment.expireNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="Expiry notified at"
+                title="Expiry notification date"
               />
             </td>
             <td>
@@ -198,7 +198,7 @@
                 class="mr-1"
                 v-if="assignment.firstOpenedAt"
                 src="/assets/img/envelope-open.svg"
-                title="First opened at"
+                title="First opened date"
               />
               <img
                 class="mr-1"

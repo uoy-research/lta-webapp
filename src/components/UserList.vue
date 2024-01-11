@@ -66,8 +66,8 @@
             <trDetail label="Device token" :codeDetail="currentUser.deviceToken" />
             <trDetail label="OS" :codeDetail="currentUser.os" />
             <trDetail label="Version" :codeDetail="currentUser.versionNumber" />
-            <trDetail label="Created at" :time="currentUser.createdAt" />
-            <trDetail label="Updated at" :time="currentUser.updatedAt" />
+            <trDetail label="Creation date" :time="currentUser.createdAt" />
+            <trDetail label="Last updated" :time="currentUser.updatedAt" />
           </table>
         </div>
       </div>

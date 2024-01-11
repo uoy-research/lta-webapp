@@ -57,7 +57,7 @@
           <table class="table">
             <trDetail label="Title" :text="currentSurvey.title" />
             <trDetail
-              label="Created at" :time="currentSurvey.createdAt"
+              label="Creation date" :time="currentSurvey.createdAt"
             />
             <trDetail label="Questions" :text="currentSurvey.questions.length" />
           </table>
