@@ -12,13 +12,13 @@
           <trDetail label="ID" :codeDetail="currentSurvey._id" />
           -->
           <trDetail label="Title" :text="currentSurvey.title" />
-          <trDetail label="Creation date" :time="currentSurvey.createdAt" />
           <trDetail
             label="Questions"
             :number="currentSurvey.questions.length"
             numberSingular="question"
             numberPlural="questions"
           />
+          <trDetail label="Creation date" :time="currentSurvey.createdAt" />
         </table>
       </div>
 
