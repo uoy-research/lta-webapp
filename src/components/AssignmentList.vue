@@ -18,28 +18,28 @@
 
     <div class="search-field input-group mb-4 mt-4">
       <label>From:</label>
-      <datetime class="ml-2 mr-2" format="YYYY-MM-DD" width="316px" v-model="filterFrom" @input="retrieveAssignments"></datetime>
+      <input type="date" class="form-control ml-2 mr-2" width="316px" v-model="filterFrom" @input="retrieveAssignments" />
       <label>To:</label>
-      <datetime class="ml-2 mr-2" format="YYYY-MM-DD" width="316px" v-model="filterTo" @input="retrieveAssignments"></datetime>
+      <input type="date" class="form-control ml-2 mr-2" width="316px" v-model="filterTo" @input="retrieveAssignments" />
     </div>
 
     <div class="list row mt-4">
       <div class="col-md-4">
-        <table class="table table-hover">
+        <div class="scrollable"><table class="table table-hover">
           <thead class="thead-light">
             <tr>
               <th style="width: 20%">Assignment</th>
-              <th style="width: 22%">publish</th>
+              <th style="width: 22%">Publish date</th>
               <th style="width: 14%">Assignee</th>
               <th style="width: 25%">Survey</th>
-              <th style="width: 8%">Notif</th>
-              <th style="width: 8%">Track</th>
+              <th style="width: 8%">Notifications</th>
+              <th style="width: 8%">Tracking</th>
             </tr>
           </thead>
           <tbody>
             <tr
               :class="{ active: index == currentIndex }"
-              v-for="(assignment, index) in assignments"
+              v-for="(assignment, index) in sortedAssignments"
               :key="index"
               @click="setActive(assignment, index)"
               @dblclick="goToAssignment(assignment)"
@@ -63,16 +63,16 @@
                 <a :href="'/surveys/' + assignment.survey._id">{{ assignment.survey.name }}</a>
               </td>
               <td>
-                <img class="mr-1" v-if="assignment.publishNotifiedAt" src="assets/img/phone-vibrate.svg" title="publishNotifiedAt"/>
-                <img class="mr-1" v-if="assignment.expireNotifiedAt"  src="assets/img/phone-vibrate.svg" title="expireNotifiedAt"/>
+                <img class="mr-1" v-if="assignment.publishNotifiedAt" src="assets/img/phone-vibrate.svg" title="Publish notified at"/>
+                <img class="mr-1" v-if="assignment.expireNotifiedAt"  src="assets/img/phone-vibrate.svg" title="Expiry notified at"/>
               </td>
               <td>
-                <img class="mr-1" v-if="assignment.firstOpenedAt" src="assets/img/envelope-open.svg" title="firstOpenedAt"/>
-                <img class="mr-1" v-if="assignment.dataset" src="assets/img/check.svg" title="dataset"/>
+                <img class="mr-1" v-if="assignment.firstOpenedAt" src="assets/img/envelope-open.svg" title="First opened at"/>
+                <img class="mr-1" v-if="assignment.dataset" src="assets/img/check.svg" title="Dataset"/>
               </td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
 
       <div class="col-md-2 ml-4">
@@ -97,8 +97,8 @@
               numberSingular="question"
               numberPlural="questions"
             />
-            <trDetail label="createdAt" :time="currentAssignment.createdAt" />
-            <trDetail label="publishAt" :time="currentAssignment.publishAt" />
+            <trDetail label="Creation date" :time="currentAssignment.createdAt" />
+            <trDetail label="Publish date" :time="currentAssignment.publishAt" />
             <trDetail
               label="Answered"
               :text="currentAssignment.dataset ? undefined : 'Unanswered'"
@@ -115,7 +115,6 @@
 import AssignmentDataService from "../services/AssignmentDataService";
 
 import moment from "moment";
-import datetime from "vuejs-datetimepicker";
 import tdAssignmentNameLink from "./table/td/tdAssignmentNameLink";
 import tdGrayIfFuture from "./table/td/tdGrayIfFuture";
 import hLargeIconHeader from "./h/hLargeIconHeader";
@@ -125,7 +124,6 @@ import trDetail from "./table/tr/trDetail";
 export default {
   name: "assignment-list",
   components: {
-    datetime,
     tdAssignmentNameLink,
     tdGrayIfFuture,
     hLargeIconHeader,
@@ -138,9 +136,12 @@ export default {
       currentIndex: -1,
       currentAssignment: null,
       searchInput: "",
+      /*
       filterFrom: moment()
         .startOf("day")
         .format("YYYY-MM-DD"),
+      */
+      filterFrom: "",
       filterTo: moment()
         .endOf("day")
         .format("YYYY-MM-DD")
@@ -199,7 +200,18 @@ export default {
   mounted() {
     moment.locale("en-ca");
     this.retrieveAssignments();
-  }
+  },
+
+  computed: {
+    sortedAssignments() {
+      return this.assignments.toSorted((a, b) => {
+        let realA = a.publishFrom || a.publishAt
+        let realB = b.publishFrom || b.publishAt
+
+        return realB.localeCompare(realA);
+      });
+    }
+  },
 };
 </script>
 

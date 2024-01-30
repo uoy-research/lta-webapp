@@ -1,0 +1,8 @@
+.scrollable {
+    overflow-y: scroll;
+    height: 600px;
+}
+
+.table-hover {
+    width: 100%;
+}

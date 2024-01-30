@@ -18,16 +18,16 @@
 
     <div class="list row mt-4">
       <div class="col-md-4">
-        <table class="table table-hover">
+        <div class="scrollable"><table class="table table-hover">
           <thead class="thead-light">
             <tr>
-              <th style="width: 20%">userId</th>
-              <th style="width: 30%">timezone</th>
-              <th style="width: 20%" tooltip="deviceToken">
-                <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="deviceToken"/>
+              <th style="width: 20%">User ID</th>
+              <th style="width: 30%">Timezone</th>
+              <th style="width: 20%" tooltip="Device Token">
+                <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="Device token"/>
               </th>
-              <th style="width: 15%">os</th>
-              <th style="width: 15%">v</th>
+              <th style="width: 15%">OS</th>
+              <th style="width: 15%">Version</th>
             </tr>
           </thead>
           <tbody>
@@ -43,13 +43,13 @@
               </td>
               <td class="td-wrap">{{user.timezone}}</td>
               <td class="td-wrap code-detail">
-                <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="deviceToken"/>
+                <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="Device token"/>
               </td>
               <td class="td-wrap">{{user.os}}</td>
               <td class="td-wrap">{{user.versionNumber}}</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
 
       <div class="col-md-2 ml-4">
@@ -61,13 +61,13 @@
           />
 
           <table class="table">
-            <trDetail label="userId" :codeDetail="currentUser.userId" />
-            <trDetail label="timezone" :codeDetail="currentUser.timezone" />
-            <trDetail label="deviceToken" :codeDetail="currentUser.deviceToken" />
-            <trDetail label="os" :codeDetail="currentUser.os" />
-            <trDetail label="versionNumber" :codeDetail="currentUser.versionNumber" />
-            <trDetail label="createdAt" :time="currentUser.createdAt" />
-            <trDetail label="updatedAt" :time="currentUser.updatedAt" />
+            <trDetail label="User" :codeDetail="currentUser.userId" />
+            <trDetail label="Timezone" :codeDetail="currentUser.timezone" />
+            <trDetail label="Device token" :codeDetail="currentUser.deviceToken" />
+            <trDetail label="OS" :codeDetail="currentUser.os" />
+            <trDetail label="Version" :codeDetail="currentUser.versionNumber" />
+            <trDetail label="Creation date" :time="currentUser.createdAt" />
+            <trDetail label="Last updated" :time="currentUser.updatedAt" />
           </table>
         </div>
       </div>

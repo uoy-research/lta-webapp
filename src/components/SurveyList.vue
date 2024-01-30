@@ -13,11 +13,11 @@
 
     <div class="list row mt-4">
       <div class="col-md-4">
-        <table class="table table-hover">
+        <div class="scrollable"><table class="table table-hover">
           <thead class="thead-light">
             <tr>
-              <th style="width: 40%">name</th>
-              <th style="width: 40%">createdAt</th>
+              <th style="width: 40%">Name</th>
+              <th style="width: 40%">Creation date</th>
               <th style="width: 20%">Questions</th>
             </tr>
           </thead>
@@ -36,7 +36,7 @@
               <td class="td-wrap">{{ survey.questions.length }}</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
 
         <table class="table">
           <tr>
@@ -50,14 +50,14 @@
       <div class="col-md-2 ml-4">
         <div v-if="currentSurvey._id != ''">
           <tableDetailsHeader
-            icon="file"
+            icon="files"
             :text="currentSurvey.name"
             :href="'/surveys/' + currentSurvey._id"
           />
           <table class="table">
-            <trDetail label="title" :text="currentSurvey.title" />
+            <trDetail label="Title" :text="currentSurvey.title" />
             <trDetail
-              label="createdAt" :time="currentSurvey.createdAt"
+              label="Creation date" :time="currentSurvey.createdAt"
             />
             <trDetail label="Questions" :text="currentSurvey.questions.length" />
           </table>

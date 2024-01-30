@@ -7,14 +7,16 @@
         <h4>Details</h4>
 
         <table class="table">
-          <trDetail label="_id" :codeDetail="user._id" />
-          <trDetail label="userId" :text="user.userId" />
-          <trDetail label="timezone" :text="user.timezone" />
-          <trDetail label="deviceToken" :codeDetail="user.deviceToken" />
-          <trDetail label="versionNumber" :codeDetail="user.versionNumber" />
-          <trDetail label="os" :codeDetail="user.os" />
-          <trDetail label="createdAt" :time="user.createdAt" />
-          <trDetail label="updatedAt" :time="user.updatedAt" />
+          <!--
+          <trDetail label="ID" :codeDetail="user._id" />
+          <trDetail label="User" :text="user.userId" />
+          -->
+          <trDetail label="Timezone" :text="user.timezone" />
+          <trDetail label="OS" :codeDetail="user.os" />
+          <trDetail label="Version" :codeDetail="user.versionNumber" />
+          <trDetail label="Device token" :codeDetail="user.deviceToken" />
+          <trDetail label="Creation date" :time="user.createdAt" />
+          <trDetail label="Last updated" :time="user.updatedAt" />
           <!-- <tr
               v-for="(group, index) in groups" :key="index"
             >
@@ -31,12 +33,12 @@
         <img class="mb-1 mr-1" src="/assets/img/people.svg" width="24" height="24" />
         Groups
       </h3>
-        <table class="table table-hover">
+        <div class="scrollable"><table class="table table-hover">
           <thead class="thead-light">
             <tr>
-              <th style="width: 25%">groupId</th>
-              <th style="width: 25%">member count</th>
-              <th style="width: 50%">members</th>
+              <th style="width: 25%">Group</th>
+              <th style="width: 25%">Member count</th>
+              <th style="width: 50%">Members</th>
             </tr>
           </thead>
           <tbody>
@@ -54,7 +56,7 @@
               <td class="td-wrap">{{group.userIds.join(", ")}}</td>
             </tr>
           </tbody>
-        </table>
+        </table></div>
       </div>
 
     <div>
@@ -68,21 +70,21 @@
         User Assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Survey</th>
-            <th style="width: 20%">Created At</th>
-            <th style="width: 15%">Publish At</th>
-            <th style="width: 10%">Notif</th>
-            <th style="width: 10%">Track</th>
+            <th style="width: 20%">Creation date</th>
+            <th style="width: 15%">Publish date</th>
+            <th style="width: 10%">Notifications</th>
+            <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            v-for="(assignment, index) in assignments.filter(a => !a.groupId)"
+            v-for="(assignment, index) in sortedAssignments.filter(a => !a.groupId)"
             :key="index"
             @dblclick="goToAssignment(assignment)"
           >
@@ -97,13 +99,13 @@
                 class="mr-1"
                 v-if="assignment.publishNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="publishNotifiedAt"
+                title="Publish notified at"
               />
               <img
                 class="mr-1"
                 v-if="assignment.expireNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="expireNotifiedAt"
+                title="Expiry notified at"
               />
             </td>
             <td>
@@ -111,41 +113,41 @@
                 class="mr-1"
                 v-if="assignment.firstOpenedAt"
                 src="/assets/img/envelope-open.svg"
-                title="firstOpenedAt"
+                title="First opened at"
               />
               <img
                 class="mr-1"
                 v-if="assignment.dataset"
                 src="/assets/img/check.svg"
-                title="dataset"
+                title="Dataset"
               />
             </td>
             <td>{{ assignment.dataset ? getCalendar(assignment.dataset.createdAt) : "Unanswered"}}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <h4 class="mt-5">
         <img class="mb-1 mr-1" src="/assets/img/people.svg" width="24" height="24" />
         Group Assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Group</th>
             <th style="width: 20%">Survey</th>
-            <th style="width: 20%">Created At</th>
-            <th style="width: 20%">Publish At</th>
-            <th style="width: 10%">Notif</th>
-            <th style="width: 10%">Track</th>
+            <th style="width: 20%">Creation date</th>
+            <th style="width: 20%">Publish date</th>
+            <th style="width: 10%">Notifications</th>
+            <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            v-for="(assignment, index) in assignments.filter(a => a.groupId)"
+            v-for="(assignment, index) in sortedAssignments.filter(a => a.groupId)"
             :key="index"
             @dblclick="goToAssignment(assignment)"
           >
@@ -163,13 +165,13 @@
                 class="mr-1"
                 v-if="assignment.publishNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="publishNotifiedAt"
+                title="Publish notified"
               />
               <img
                 class="mr-1"
                 v-if="assignment.expireNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="expireNotifiedAt"
+                title="Expiry notified"
               />
             </td>
             <td>
@@ -177,19 +179,19 @@
                 class="mr-1"
                 v-if="assignment.firstOpenedAt"
                 src="/assets/img/envelope-open.svg"
-                title="firstOpenedAt"
+                title="First opened"
               />
               <img
                 class="mr-1"
                 v-if="assignment.dataset"
                 src="/assets/img/check.svg"
-                title="dataset"
+                title="Dataset"
               />
             </td>
             <td>{{ assignment.dataset ? getCalendar(assignment.dataset.createdAt) : "Unanswered"}}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
   </div>
 </template>
@@ -207,7 +209,7 @@ import hLargeIconHeader from "./h/hLargeIconHeader";
 import trDetail from "./table/tr/trDetail";
 
 export default {
-  name: "user",
+  name: "user-component",
   components: {
     tdAssignmentNameLink,
     tdGroupNameLink,
@@ -271,7 +273,13 @@ export default {
     this.getUser(this.$route.params.id);
     this.getAssignmentsOfUser(this.$route.params.id);
     this.getGroupsOfUser(this.$route.params.id);
-  }
+  },
+
+  computed: {
+    sortedAssignments() {
+      return this.assignments.toSorted().reverse();
+    }
+  },
 };
 </script>
 

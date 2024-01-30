@@ -46,52 +46,85 @@ class SurveyDataService {
   }
 
   assignSurvey(sid, uid) {
-    return http.post(`/users/${uid}/surveys/${sid}`);
+
+    let usersOrGroups = null;
+    switch (uid.slice(0, 2)) {
+      case "u:":
+        usersOrGroups = "users";
+        uid = uid.slice(2);
+        break;
+      case "g:":
+        usersOrGroups = "groups";
+        uid = uid.slice(2);
+        break;
+      default:
+        alert("please select either user or group");
+        return;
+    }
+
+    var now = new Date().toISOString();
+    var date = now.slice(0, 10);
+    var time = now.slice(11, 19);
+
+    return http.post(`/${usersOrGroups}/${uid}/schedule/survey/${sid}/${date}/${date}/${time}++++/0`);
   }
 
   scheduleSurveyOnce(sid, uid, publishAt) {
-    // alert("publishAt: '" + moment(publishAt.format("YYYY-MM-DD HH:mm")) + "'.");
+
+    let usersOrGroups = null;
+    switch (uid.slice(0, 2)) {
+      case "u:":
+        usersOrGroups = "users";
+        uid = uid.slice(2);
+        break;
+      case "g:":
+        usersOrGroups = "groups";
+        uid = uid.slice(2);
+        break;
+      default:
+        alert("please select either user or group");
+        return;
+    }
+
     if (!moment(publishAt).isValid()) {
       alert("publishAt not valid: '" + publishAt + "'.");
       return;
     }
 
-    var publishAtMillis = moment(publishAt).utc().unix();
-    return http.post(`/users/${uid}/schedule/survey/${sid}/${publishAtMillis}`);
+    var dt = new Date(publishAt).toISOString();
+    var date = dt.slice(0, 10);
+    var time = dt.slice(11, 19);
+
+    return http.post(`/${usersOrGroups}/${uid}/schedule/survey/${sid}/${date}/${date}/${time}++++/0`);
   }
 
-  scheduleSurveySeries(sid, uid, gid, startYMD, endYMD, hm1, hm2, hm3, hm4, hm5, plusMinusRandomMinutes) {
+  scheduleSurveySeries(sid, uid, startYMD, endYMD, hm1, hm2, hm3, hm4, hm5, plusMinusRandomMinutes) {
 
-    if ((uid && gid) || (!uid && !gid)) {
-      alert("please select either user or group");
-      return;
+    let usersOrGroups = null;
+    switch (uid.slice(0, 2)) {
+      case "u:":
+        usersOrGroups = "users";
+        uid = uid.slice(2);
+        break;
+      case "g:":
+        usersOrGroups = "groups";
+        uid = uid.slice(2);
+        break;
+      default:
+        alert("please select either user or group");
+        return;
     }
 
     if (!moment(startYMD).isValid()) {
-      alert("publishAt not valid: '" + startYMD + "'.");
+      alert("startYMD not valid: '" + startYMD + "'.");
       return;
     }
     if (!moment(endYMD).isValid()) {
-      alert("publishAt not valid: '" + endYMD + "'.");
+      alert("endYMD not valid: '" + endYMD + "'.");
       return;
     }
 
-    // var startDateUtcUnix = moment(startYMD).unix();
-    // var endDateUtcUnix = moment(endYMD).unix();
-
-    // alert(startDate);
-    // alert(moment(startDate));
-    // alert(moment(startDate).unix());
-    // alert(moment(startDate).format('X'));
-
-    // alert(moment(startDate).format("YYYY-MM-DD"));
-    // alert(moment(startDate).unix().format("YYYY-MM-DD"));
-    
-    if (uid) {
-      return http.post(`/users/${uid}/schedule/survey/${sid}/${startYMD}/${endYMD}/${hm1}+${hm2}+${hm3}+${hm4}+${hm5}/${plusMinusRandomMinutes}`);
-    } else if (gid) {
-      return http.post(`/groups/${gid}/schedule/survey/${sid}/${startYMD}/${endYMD}/${hm1}+${hm2}+${hm3}+${hm4}+${hm5}/${plusMinusRandomMinutes}`);
-    }
+    return http.post(`/${usersOrGroups}/${uid}/schedule/survey/${sid}/${startYMD}/${endYMD}/${hm1}+${hm2}+${hm3}+${hm4}+${hm5}/${plusMinusRandomMinutes}`);
   }
 }
 

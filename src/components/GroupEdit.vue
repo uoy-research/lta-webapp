@@ -11,11 +11,11 @@
       All users
     </h4>
 
-    <table class="table table-hover">
+    <div class="scrollable"><table class="table table-hover">
       <thead class="thead-light">
         <tr>
           <th style="width: 20%">User</th>
-          <th style="width: 40%">timezone</th>
+          <th style="width: 40%">Timezone</th>
           <th style="width: 40%">Member</th>
         </tr>
       </thead>
@@ -35,7 +35,7 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
 
     <button
       @click="updateGroup"
@@ -56,7 +56,7 @@ import tdUserNameLink from "./table/td/tdUserNameLink";
 import hLargeIconHeader from "./h/hLargeIconHeader";
 
 export default {
-  name: "group",
+  name: "group-component",
   components: {
     tdUserNameLink,
     hLargeIconHeader

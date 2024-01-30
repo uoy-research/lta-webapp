@@ -7,10 +7,12 @@
         <h4>Details</h4>
 
         <table class="table">
-          <trDetail label="_id" :codeDetail="group._id" />
-          <trDetail label="groupId" :text="group.groupId" />
-          <trDetail label="createdAt" :time="group.createdAt" />
-          <trDetail label="updatedAt" :time="group.updatedAt" />
+          <!--
+          <trDetail label="ID" :codeDetail="group._id" />
+          <trDetail label="Group" :text="group.groupId" />
+          -->
+          <trDetail label="Creation date" :time="group.createdAt" />
+          <trDetail label="Last updated" :time="group.updatedAt" />
         </table>
       </div>
     </div>
@@ -21,16 +23,16 @@
         Members
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
-            <th style="width: 20%">userId</th>
-            <th style="width: 30%">timezone</th>
-            <th style="width: 20%" tooltip="deviceToken">
-              <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="deviceToken" />
+            <th style="width: 20%">User ID</th>
+            <th style="width: 30%">Timezone</th>
+            <th style="width: 20%" tooltip="Device token">
+              <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="Device token" />
             </th>
-            <th style="width: 15%">os</th>
-            <th style="width: 15%">v</th>
+            <th style="width: 15%">OS</th>
+            <th style="width: 15%">Version</th>
           </tr>
         </thead>
         <tbody>
@@ -44,13 +46,13 @@
             </td>
             <td class="td-wrap">{{user.timezone}}</td>
             <td class="td-wrap code-detail">
-              <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="deviceToken" />
+              <img class="mb-1 mr-1" src="/assets/img/phone.svg" title="Device token" />
             </td>
             <td class="td-wrap">{{user.os}}</td>
             <td class="td-wrap">{{user.versionNumber}}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <table class="table">
@@ -71,19 +73,19 @@
         Group Assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 20%">Survey</th>
-            <th style="width: 20%">createdAt</th>
-            <th style="width: 20%">publishFrom</th>
-            <th style="width: 20%">publishTo</th>
+            <th style="width: 20%">Creation date</th>
+            <th style="width: 20%">Published from</th>
+            <th style="width: 20%">Published to</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            v-for="(assignment, index) in assignments"
+            v-for="(assignment, index) in sortedAssignments"
             :key="index"
             @dblclick="goToAssignment(assignment)"
           >
@@ -96,7 +98,7 @@
             <td>{{ getCalendar(assignment.publishTo) }}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
   </div>
 </template>
@@ -114,7 +116,7 @@ import hLargeIconHeader from "./h/hLargeIconHeader";
 import trDetail from "./table/tr/trDetail";
 
 export default {
-  name: "group",
+  name: "group-component",
   components: {
     tdUserNameLink,
     tdAssignmentNameLink,
@@ -174,7 +176,13 @@ export default {
     this.getGroup(this.$route.params.id);
     this.getAssignmentsOfGroup(this.$route.params.id);
     // this.retrieveUsers();
-  }
+  },
+
+  computed: {
+    sortedAssignments() {
+      return this.assignments.toSorted().reverse();
+    }
+  },
 };
 </script>
 

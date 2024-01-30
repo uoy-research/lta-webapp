@@ -1,22 +1,24 @@
 <template>
   <div>
-    <hLargeIconHeader :text="currentSurvey.name" :icon="'file'"></hLargeIconHeader>
+    <hLargeIconHeader :text="currentSurvey.name" :icon="'files'"></hLargeIconHeader>
 
     <div class="row">
       <div class="col">
         <h4>Details</h4>
 
         <table class="table">
-          <trDetail label="name" :text="currentSurvey.name" />
-          <trDetail label="title" :text="currentSurvey.title" />
-          <trDetail label="_id" :codeDetail="currentSurvey._id" />
-          <trDetail label="createdAt" :time="currentSurvey.createdAt" />
+          <!--
+          <trDetail label="Name" :text="currentSurvey.name" />
+          <trDetail label="ID" :codeDetail="currentSurvey._id" />
+          -->
+          <trDetail label="Title" :text="currentSurvey.title" />
           <trDetail
             label="Questions"
             :number="currentSurvey.questions.length"
             numberSingular="question"
             numberPlural="questions"
           />
+          <trDetail label="Creation date" :time="currentSurvey.createdAt" />
         </table>
       </div>
 
@@ -30,14 +32,21 @@
     <div class="mt-5 mb-5">
       <h4>
         <img class="mb-2 mr-1" src="/assets/img/person-plus.svg" width="24" height="24" />
-        Assign and Publish
-      </h4>userId:
+        Schedule now
+      </h4>
       <form class="edit-form">
         <div class="input-group">
           <select class="form-control" v-model="selectedAssignUserId">
+            <option disabled>—Groups—</option>
+            <option
+              v-for="g in allGroups"
+              v-bind:value="'g:' + g.groupId"
+              v-bind:key="g.groupId"
+            >{{ g.groupId }}</option>
+            <option disabled>—Users—</option>
             <option
               v-for="u in allUsers"
-              v-bind:value="u.userId"
+              v-bind:value="'u:' + u.userId"
               v-bind:key="u.userId"
             >{{ u.userId }}</option>
           </select>
@@ -47,28 +56,35 @@
               type="button"
               class="btn btn-primary ml-2"
               @click="assignSurvey"
-            >Assign and Publish</button>
+            >Schedule Now</button>
           </span>
         </div>
       </form>
 
       <h4 class="mt-4">
         <img class="mb-2 mr-1" src="/assets/img/person-plus.svg" width="24" height="24" />
-        Schedule Once
-      </h4>userId:
+        Schedule once
+      </h4>
       <form class="edit-form">
         <div class="input-group">
           <select class="form-control" v-model="selectedScheduleOnceUserId">
+            <option disabled>—Groups—</option>
+            <option
+              v-for="g in allGroups"
+              v-bind:value="'g:' + g.groupId"
+              v-bind:key="g.groupId"
+            >{{ g.groupId }}</option>
+            <option disabled>—Users—</option>
             <option
               v-for="u in allUsers"
-              v-bind:value="u.userId"
+              v-bind:value="'u:' + u.userId"
               v-bind:key="u.userId"
             >{{ u.userId }}</option>
           </select>
         </div>
         <div>
-          publishAt:
-          <datetime format="YYYY-MM-DD H:i:s" width="300px" v-model="scheduleOnceDatetime"></datetime>
+          Publish at:
+          <input type="datetime-local" step="2" width="300px" class="form-control" v-model="scheduleOnceDatetime" />
         </div>
         <div class="mt-3">
           <span>
@@ -79,47 +95,45 @@
 
       <h4 class="mt-4">
         <img class="mb-2 mr-1" src="/assets/img/person-plus.svg" width="24" height="24" />
-        Schedule Series
+        Schedule series
       </h4>
       <form class="edit-form">
-        userId:
+        User ID:
         <div class="input-group">
           <select class="form-control" v-model="selectedScheduleSeriesUserId">
+            <option disabled>—Groups—</option>
+            <option
+              v-for="g in allGroups"
+              v-bind:value="'g:' + g.groupId"
+              v-bind:key="g.groupId"
+            >{{ g.groupId }}</option>
+            <option disabled>—Users—</option>
             <option
               v-for="u in allUsers"
-              v-bind:value="u.userId"
+              v-bind:value="'u:' + u.userId"
               v-bind:key="u.userId"
             >{{ u.userId }}</option>
           </select>
         </div>
-        groupId:
-        <div class="input-group">
-          <select class="form-control" v-model="selectedScheduleSeriesGroupId">
-            <option
-              v-for="g in allGroups"
-              v-bind:value="g.groupId"
-              v-bind:key="g.groupId"
-            >{{ g.groupId }}</option>
-          </select>
-        </div>
         <div>
-          scheduleStartDate:
-          <datetime format="YYYY-MM-DD" width="300px" v-model="scheduleStartDate"></datetime>scheduleEndDate:
-          <datetime format="YYYY-MM-DD" width="300px" v-model="scheduleEndDate"></datetime>
+          Start date:
+          <input type="date" width="300px" class="form-control" v-model="scheduleStartDate" />
+          End date:
+          <input type="date" width="300px" class="form-control" v-model="scheduleEndDate" />
         </div>
 
         <div>
           Hours:
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM1"></datetime>
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM2"></datetime>
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM3"></datetime>
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM4"></datetime>
-          <datetime format="H:i:s" width="60px" v-model="scheduleHM5"></datetime>
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM1" />
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM2" />
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM3" />
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM4" />
+          <input type="time" step="2" width="60px" class="form-control" v-model="scheduleHM5" />
         </div>
 
         <div>
-          randomizeMinutes:
-          <input type="text" class="form-control" v-model="randomizeMinutes" />
+          Randomize minutes:
+          <input type="number" min="0" class="form-control" v-model="randomizeMinutes" />
         </div>
 
         <div class="mt-4">
@@ -143,15 +157,15 @@
         User assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 10%">User</th>
-            <th style="width: 20%">createdAt</th>
-            <th style="width: 20%">publishAt</th>
-            <th style="width: 10%">Notif</th>
-            <th style="width: 10%">Track</th>
+            <th style="width: 20%">Creation date</th>
+            <th style="width: 20%">Publish date</th>
+            <th style="width: 10%">Notification</th>
+            <th style="width: 10%">Tracking</th>
             <th style="width: 20%">Answered</th>
           </tr>
         </thead>
@@ -172,13 +186,13 @@
                 class="mr-1"
                 v-if="assignment.publishNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="publishNotifiedAt"
+                title="Publish notification date"
               />
               <img
                 class="mr-1"
                 v-if="assignment.expireNotifiedAt"
                 src="/assets/img/phone-vibrate.svg"
-                title="expireNotifiedAt"
+                title="Expiry notification date"
               />
             </td>
             <td>
@@ -186,20 +200,20 @@
                 class="mr-1"
                 v-if="assignment.firstOpenedAt"
                 src="/assets/img/envelope-open.svg"
-                title="firstOpenedAt"
+                title="First opened date"
               />
               <img
                 class="mr-1"
                 v-if="assignment.dataset"
                 src="/assets/img/check.svg"
-                title="dataset"
+                title="Dataset"
               />
             </td>
             <td>{{ assignment.dataset ? getCalendar(assignment.dataset.createdAt) : "Unanswered" }}</td>
             <td />
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
       <div class="mt-4" v-if="!isGeneratingDownload && !(datasetCsv || datasetJson)">
         <span class="m-2">
@@ -245,14 +259,14 @@
         Group assignments
       </h4>
 
-      <table class="table table-hover">
+      <div class="scrollable"><table class="table table-hover">
         <thead class="thead-light">
           <tr>
             <th style="width: 20%">Assignment</th>
             <th style="width: 10%">Group</th>
-            <th style="width: 20%">createdAt</th>
-            <th style="width: 20%">publishFrom</th>
-            <th style="width: 20%">publishTo</th>
+            <th style="width: 20%">Creation date</th>
+            <th style="width: 20%">Publish from</th>
+            <th style="width: 20%">Publish to</th>
           </tr>
         </thead>
         <tbody>
@@ -270,7 +284,7 @@
             <td>{{ getCalendar(assignment.publishTo) }}</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
 
 
       <div class="mt-4" v-if="!isGeneratingResultsDownload && !(datasetResultsCsv || datasetResultsJson)">
@@ -347,7 +361,6 @@
 
 <script>
 import moment from "moment";
-import datetime from "vuejs-datetimepicker";
 
 import SurveyDataService from "../services/SurveyDataService";
 import UserDataService from "../services/UserDataService";
@@ -360,12 +373,11 @@ import trDetail from "./table/tr/trDetail";
 
 export default {
   components: {
-    datetime,
     tdAssignmentNameLink,
     hLargeIconHeader,
     trDetail
   },
-  name: "survey",
+  name: "survey-component",
   data() {
     return {
       currentSurvey: {
@@ -386,7 +398,6 @@ export default {
       scheduleOnceDatetime: "",
 
       selectedScheduleSeriesUserId: "",
-      selectedScheduleSeriesGroupId: "",
       scheduleStartDate: "",
       scheduleEndDate: "",
       scheduleHM1: "",
@@ -409,10 +420,16 @@ export default {
   },
   computed: {
      userAssignments: function() {
-       return this.assignments.filter(a => a.userId)
+       return this.assignments
+        .filter(a => a.userId)
+        .toSorted()
+        .reverse();
      },
      groupAssignments: function() {
-       return this.assignments.filter(a => a.groupId);
+       return this.assignments
+        .filter(a => a.groupId)
+        .toSorted()
+        .reverse();
      }
   },
   methods: {
@@ -487,11 +504,13 @@ export default {
       SurveyDataService.update(this.currentSurvey._id, this.currentSurvey)
         .then(response => {
           console.log(response.data);
-          this.updateMessage = "The Survey was updated successfully!";
+          this.updateMessage = "The survey was updated successfully!";
+          alert(this.updateMessage);
         })
         .catch(e => {
           console.log(e);
           this.updateMessage = "Update failed.";
+          alert(this.updateMessage);
         });
     },
 
@@ -502,8 +521,9 @@ export default {
       )
         .then(response => {
           console.log(response.data);
-          this.assignMessage = "The user has been assigned the survey.";
-          this.getAssignmentsOfSurvey()
+          this.assignMessage = "The survey has been scheduled.";
+          alert(this.assignMessage);
+          this.getAssignmentsOfSurvey(this.currentSurvey._id)
         })
         .catch(e => {
           console.log(e);
@@ -513,6 +533,8 @@ export default {
     },
 
     scheduleSurveyOnce() {
+      this.scheduleOnceDatetime = this.scheduleOnceDatetime.replace("T", " ");
+      
       SurveyDataService.scheduleSurveyOnce(
         this.currentSurvey._id,
         this.selectedScheduleOnceUserId,
@@ -524,7 +546,8 @@ export default {
             "The survey series has been scheduled at " +
             this.scheduleOnceDatetime +
             ".";
-          this.getAssignmentsOfSurvey()
+          alert(this.assignMessage);
+          this.getAssignmentsOfSurvey(this.currentSurvey._id)
         })
         .catch(e => {
           console.log(e);
@@ -537,7 +560,6 @@ export default {
       SurveyDataService.scheduleSurveySeries(
         this.currentSurvey._id,
         this.selectedScheduleSeriesUserId,
-        this.selectedScheduleSeriesGroupId,
         this.scheduleStartDate,
         this.scheduleEndDate,
         this.scheduleHM1,
@@ -550,7 +572,8 @@ export default {
         .then(response => {
           console.log(response.data);
           this.assignMessage = "The survey series has been scheduled.";
-          this.getAssignmentsOfSurvey()
+          alert(this.assignMessage);
+          this.getAssignmentsOfSurvey(this.currentSurvey._id)
         })
         .catch(e => {
           console.log(e);

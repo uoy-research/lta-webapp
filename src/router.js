@@ -1,11 +1,5 @@
-import Vue from "vue";
-import Router from "vue-router";
-
-Vue.use(Router);
-
-export default new Router({
-  mode: "history",
-  routes: [
+import { createWebHistory, createRouter } from "vue-router";
+const routes = [
     {
       path: "/users",
       alias: ["/Users", "/webadmin/users"],
@@ -78,5 +72,11 @@ export default new Router({
       name: "login",
       component: () => import("./components/Login")
     }
-  ]
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
 });
+
+export default router;
