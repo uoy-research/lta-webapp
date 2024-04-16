@@ -124,7 +124,21 @@ class SurveyDataService {
       return;
     }
 
-    return http.post(`/${usersOrGroups}/${uid}/schedule/survey/${sid}/${startYMD}/${endYMD}/${hm1}+${hm2}+${hm3}+${hm4}+${hm5}/${plusMinusRandomMinutes}`);
+    // Convert local 'HH:MM:SS' to UTC 'HH:MM:SS'
+    let intervals = [hm1, hm2, hm3, hm4, hm5].map((time) => {
+      if (time == "") { return ""; }  // Ignore empty fields
+
+      let hm = time.split(":").map(Number);
+      let date = new Date();
+
+      date.setHours(hm[0]);
+      date.setMinutes(hm[1]);
+      date.setSeconds(hm[2]);
+
+      return date.toISOString().slice(11, 19);
+    });
+
+    return http.post(`/${usersOrGroups}/${uid}/schedule/survey/${sid}/${startYMD}/${endYMD}/${intervals.join("+")}/${plusMinusRandomMinutes}`);
   }
 }
 
